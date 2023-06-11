@@ -1,0 +1,19 @@
+[core]
+	preloadindex = true
+	fscache = true
+	autocrlf = input
+[status]
+	submoduleSummary = false
+[alias]
+	co = checkout
+[user]
+	name = Hector Rincon
+	email = hecerinc@hotmail.com
+[push]
+	default = upstream
+[gc]
+	auto = 256
+[rebase]
+	backend = apply
+[init]
+	defaultBranch = main

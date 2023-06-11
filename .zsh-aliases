@@ -1,0 +1,4 @@
+# Git
+alias gs="git status"
+alias gb="git branch"
+alias gpom="git push origin main"
