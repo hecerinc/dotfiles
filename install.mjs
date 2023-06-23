@@ -47,12 +47,13 @@ if (fs.existsSync(`${homeDir}/.oh-my-zsh/themes/README.md`)) {
 } else {
 	console.log(chalk.red("Nope, installing oh-my-zsh"));
 
-	await $`sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`;
+	await $`sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended`;
+	const ZSH_CUSTOM = `${homeDir}/.oh-my-zsh/custom`;
 
 	// spaceship-prompt
 	// --------------------------------------------------
-	await $`git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1`;
-	await $`ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"`;
+	await $`git clone https://github.com/spaceship-prompt/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt" --depth=1`;
+	await $`ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"`;
 
 	await $`sed -i s/robbyrussell/spaceship/ ~/.zshrc`;
 }
