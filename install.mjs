@@ -42,7 +42,7 @@ try {
 // Oh-my-zsh
 // --------------------------------------------------
 console.log(chalk.blue("Checking if oh-my-zsh is installed"));
-if (fs.existsSync(`${homeDir}/.oh-my-zsh/themes/README.md`)) {
+if (fs.existsSync(`${homeDir}/.oh-my-zsh`)) {
 	console.log(chalk.green("You already have oh-my-zsh, awesome!"));
 } else {
 	console.log(chalk.red("Nope, installing oh-my-zsh"));
