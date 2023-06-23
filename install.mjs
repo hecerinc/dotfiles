@@ -71,7 +71,7 @@ await nothrow($`cp -i .gitconfig ~/.gitconfig`);
 console.log(chalk.blue("Copying .zsh-aliases to ~/.zsh-aliases"));
 await nothrow($`cp -i .zsh-aliases ~/.zsh-aliases`);
 
-fs.readFileSync(`${homeDir}/.zshrc`, async (err, data) => {
+fs.readFile(`${homeDir}/.zshrc`, async (err, data) => {
 	if (err) throw err;
 	if (data.includes("zsh-aliases")) {
 		console.log(
