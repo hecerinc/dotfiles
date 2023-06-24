@@ -6,6 +6,9 @@ set showtabline=2
 " Highlight search results
 set hlsearch
 
+" Round indents to match the sw
+set shiftround
+
 " Wildmenu! (Scrolling through files in :e or commands in :set)
 set wildmenu
 set wildmode=full
