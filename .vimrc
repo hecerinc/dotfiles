@@ -135,6 +135,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'srcery-colors/srcery-vim'
 	Plug 'joshdick/onedark.vim'
 	Plug 'ayu-theme/ayu-vim'
+	Plug 'haishanh/night-owl.vim'
 	Plug 'lifepillar/vim-solarized8'
 	Plug 'morhetz/gruvbox'
 	Plug 'mhartington/oceanic-next' "colorscheme OceanicNext
