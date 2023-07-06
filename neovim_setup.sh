@@ -2,8 +2,8 @@
 
 NVIM_DIR="$HOME/nvim"
 
-echo 'export $XDG_CONFIG_HOME = $HOME' >> ~/.zshrc
-echo 'export $XDG_CONFIG_HOME = $HOME' >> ~/.profile
+echo 'export $XDG_CONFIG_HOME=$HOME' >> ~/.zshrc
+echo 'export $XDG_CONFIG_HOME=$HOME' >> ~/.profile
 
 mkdir -i $NVIM_DIR
 
