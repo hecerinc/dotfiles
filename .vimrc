@@ -191,6 +191,9 @@ nnoremap <silent> <F4> :let @+=expand("%:p")<CR>
 " Open FZF when pressing space p
 nnoremap <Leader><Leader> :Buffers <CR>
 
+" Press Leader s to search and replace word under cursor (in the current line)
+nnoremap <Leader>s :s/\<<C-r><C-w>\>//g
+
 " When in Windows terminal, it's very hard to <C-v> because it's paste, so add a command to do visual block
 command! Vb :execute "normal! \<C-v>"
 
