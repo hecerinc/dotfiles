@@ -18,4 +18,4 @@ bash neovim_setup.sh
 ## To-Do
 
 - [ ] Make neovim-setup work for Windows
-- [ ] Do we want to just symlink everything to the `dotfiles/` version?
+- [ ] Do we want to just symlink everything to the `dotfiles/`?

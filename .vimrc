@@ -9,6 +9,9 @@ set hlsearch
 " Round indents to match the sw
 set shiftround
 
+" Show matching parens / brackets
+set showmatch
+
 " Wildmenu! (Scrolling through files in :e or commands in :set)
 set wildmenu
 set wildmode=full
@@ -67,6 +70,10 @@ nnoremap <A-S-L> :set list!<CR>
 
 " nnoremap o o<Esc>
 " nnoremap O O<Esc>
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+
 
 
 " -- Searching ---------------------------------------------
@@ -113,11 +120,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'maxmellon/vim-jsx-pretty'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'chrisbra/Colorizer'
-	Plug 'pangloss/vim-javascript'
 	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
+	Plug 'pangloss/vim-javascript'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 	Plug 'dense-analysis/ale'
 	Plug 'vimwiki/vimwiki'
@@ -126,6 +133,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'prettier/vim-prettier', {
 	  \ 'do': 'yarn install --frozen-lockfile --production' }
 
+	Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+	Plug 'ThePrimeagen/harpoon'
+	
 	" Syntax highlighting
 	Plug 'pprovost/vim-ps1'
 	Plug 'jparise/vim-graphql'
@@ -151,6 +161,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 	Plug 'audibleblink/hackthebox.vim'
 	Plug 'aonemd/kuroi.vim'
+
+
 call plug#end()
 
 
@@ -192,7 +204,10 @@ nnoremap <silent> <F4> :let @+=expand("%:p")<CR>
 nnoremap <Leader><Leader> :Buffers <CR>
 
 " Press Leader s to search and replace word under cursor (in the current line)
-nnoremap <Leader>s :s/\<<C-r><C-w>\>//g
+nnoremap <Leader>s :s/\<<C-r><C-w>\>//gI<Left><Left><Left>
+
+" Paste without removing the clipboard value
+xnoremap <Leader>d "_dP
 
 " When in Windows terminal, it's very hard to <C-v> because it's paste, so add a command to do visual block
 command! Vb :execute "normal! \<C-v>"
@@ -285,3 +300,4 @@ command! Mcux cd C:/dev/mcux/
 command! Stories cd C:/dev/mcux/apps/web/Scripts/Stories
 command! CMV cd C:/dev/mcux/apps/web/Scripts/CMV
 
+hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none 
