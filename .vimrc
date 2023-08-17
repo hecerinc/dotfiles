@@ -12,6 +12,9 @@ set shiftround
 " Show matching parens / brackets
 set showmatch
 
+" Do relative numbers for real
+set relativenumber
+
 " Wildmenu! (Scrolling through files in :e or commands in :set)
 set wildmenu
 set wildmode=full
@@ -124,6 +127,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-unimpaired'
 	Plug 'pangloss/vim-javascript'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 	Plug 'dense-analysis/ale'
@@ -135,7 +139,7 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
 	Plug 'ThePrimeagen/harpoon'
-	
+
 	" Syntax highlighting
 	Plug 'pprovost/vim-ps1'
 	Plug 'jparise/vim-graphql'
@@ -262,7 +266,8 @@ nnoremap <F12> :ALEGoToDefinition<CR>
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
 
 " Press ;j to beautify a JS file
-nmap <leader>j :call JsBeautify()<cr>
+" nmap <leader>j :call JsBeautify()<cr> " TODO: this is already used by
+" AleNext
 
 
 let g:tagbar_type_typescript = {
@@ -300,4 +305,4 @@ command! Mcux cd C:/dev/mcux/
 command! Stories cd C:/dev/mcux/apps/web/Scripts/Stories
 command! CMV cd C:/dev/mcux/apps/web/Scripts/CMV
 
-hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none 
+hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none
