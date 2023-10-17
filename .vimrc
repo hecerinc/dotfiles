@@ -135,7 +135,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'pangloss/vim-javascript'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 	Plug 'dense-analysis/ale'
 	Plug 'vimwiki/vimwiki'
 	Plug 'mortonfox/nerdtree-clip'
@@ -149,7 +148,6 @@ call plug#begin('~/.vim/plugged')
 	" Syntax highlighting
 	Plug 'pprovost/vim-ps1'
 	Plug 'jparise/vim-graphql'
-	Plug 'gabrielelana/vim-markdown'
 
 	" Colorschemes
 	Plug 'srcery-colors/srcery-vim'
@@ -311,4 +309,6 @@ command! Mcux cd C:/dev/mcux/
 command! Stories cd C:/dev/mcux/apps/web/Scripts/Stories
 command! CMV cd C:/dev/mcux/apps/web/Scripts/CMV
 
-hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none
+" Remove the stupid underline under markdown links in VimWiki
+hi! link VimwikiLink GruvboxBlue
+" hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none
