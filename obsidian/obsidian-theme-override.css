@@ -1,0 +1,38 @@
+.MathJax {
+  font-size: 1.3em;
+}
+.cm-inline-code {
+  font-size: 15px;
+  color: var(--code-property) !important;
+}
+/*
+body {
+  --font-monospace: 'Cascadia Code', Menlo, 'SFMono-Regular', 'Source Code Pro',
+    monospace !important;
+}
+*/
+
+:root {
+  --font-monospace: 'Cascadia Code', monospace;
+}
+code,
+pre {
+  font-size: 18px;
+}
+.theme-dark .cm-s-obsidian span.cm-inline-code,
+.theme-dark .markdown-preview-view code {
+  color: #72deec;
+}
+.theme-light .cm-s-obsidian span.cm-inline-code,
+.theme-light .markdown-preview-view code {
+  color: #076cba;
+}
+.image-embed[alt]:after {
+  content: attr(alt);
+  display: block;
+  margin: 0.2rem 1rem 1rem 1rem;
+  font-size: 90%;
+  line-height: 1.4;
+  color: var(--text-faint);
+}
+
