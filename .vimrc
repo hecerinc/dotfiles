@@ -12,6 +12,7 @@ set incsearch
 " We always have a dark background
 set background=dark
 
+set signcolumn=yes
 " Round indents to match the sw
 set shiftround
 
@@ -79,6 +80,7 @@ nnoremap <A-S-L> :set list!<CR>
 
 " nnoremap o o<Esc>
 " nnoremap O O<Esc>
+" Center screen when jumping search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
@@ -99,8 +101,8 @@ map <Leader>p :bp<cr>
 map <Leader>d :bp\|bd #<CR>
 
 " Go to next or previous error
-map <Leader>k :ALEPrevious<CR>
-map <Leader>j :ALENext<CR>
+map <Leader>k <Plug>(coc-diagnostic-prev)
+map <Leader>j <Plug>(coc-diagnostic-next)
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
@@ -135,7 +137,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'pangloss/vim-javascript'
-	Plug 'dense-analysis/ale'
+	" Plug 'dense-analysis/ale'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'vimwiki/vimwiki'
 	Plug 'mortonfox/nerdtree-clip'
 	Plug 'captbaritone/better-indent-support-for-php-with-html'
@@ -144,6 +147,8 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
 	Plug 'ThePrimeagen/harpoon'
+	Plug 'gabrielelana/vim-markdown'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 	" Syntax highlighting
 	Plug 'pprovost/vim-ps1'
@@ -264,7 +269,12 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <S-A-h> :nohl<CR>
 
 " F12 to go to definition
-nnoremap <F12> :ALEGoToDefinition<CR>
+" nnoremap <F12> :ALEGoToDefinition<CR>
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition) zzzv
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Press ;f to Rg the word under cursor
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
@@ -303,6 +313,9 @@ let g:markdown_enable_spell_checking = 0
 " 1. mcux (2 spaces for indentation)
 au BufRead,BufNewFile,BufWinEnter C:/dev/mcux/* setlocal ts=2 sw=2 et
 
+" 2. UIF analysis (4 spaces)
+au BufRead,BufNewFile,BufWinEnter C:/dev/uifanalysis/* setlocal ts=4 sw=4 et
+
 " Command to change to the project
 command! Waas cd C:/dev/mcux/apps/web
 command! Mcux cd C:/dev/mcux/
@@ -312,3 +325,11 @@ command! CMV cd C:/dev/mcux/apps/web/Scripts/CMV
 " Remove the stupid underline under markdown links in VimWiki
 hi! link VimwikiLink GruvboxBlue
 " hi VimwikiLink term=underline ctermfg=cyan guifg=#1ecbe1 gui=none
+
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
