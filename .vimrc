@@ -268,13 +268,20 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Useful shortcut (Shift+alt+h) to hide highlight matches
 nnoremap <S-A-h> :nohl<CR>
 
-" F12 to go to definition
-" nnoremap <F12> :ALEGoToDefinition<CR>
+
+" ---------------------------------------------------------------------------------------------------- 
+" COC.nvim
+" ---------------------------------------------------------------------------------------------------- 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition) zzzv
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
 
 " Press ;f to Rg the word under cursor
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
