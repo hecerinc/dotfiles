@@ -83,7 +83,7 @@ nnoremap <A-S-L> :set list!<CR>
 " Center screen when jumping search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
+nnoremap <S-K> k
 
 
 
