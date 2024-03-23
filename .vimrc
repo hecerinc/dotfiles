@@ -1,5 +1,8 @@
 set hidden
 
+" This is useful over SSH
+set background=dark
+
 " Always show tabline (tabs are cool)
 set showtabline=2
 
