@@ -4,6 +4,7 @@ alias gb="git branch"
 alias gpom="git push origin main"
 
 alias ls="ls -p --color=auto $*"
+alias fd="fdfind $*"
 
 
 # Support ctrl sequences through SSH

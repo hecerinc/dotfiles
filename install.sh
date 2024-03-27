@@ -41,31 +41,32 @@ else
   echo -e "\033[31mNope, installing oh-my-zsh\033[0m"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
-  
+
   # spaceship-prompt
   # --------------------------------------------------
   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt" --depth=1
   ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"
-  
-  sed -i 's/robbyrussell/spaceship/' ~/.zshrc
+
+  sed -i 's/robbyrussell/spaceship/' $HOME/.zshrc
 fi
 
 # .vimrc
 # --------------------------------------------------
 echo -e "\033[34mCopying .vimrc to ~/.vimrc\033[0m"
-cp -i .vimrc ~/.vimrc
+cp -i .vimrc $HOME/.vimrc
 
 # .gitconfig
 # --------------------------------------------------
 echo -e "\033[34mCopying .gitconfig to ~/.gitconfig\033[0m"
-cp -i .gitconfig ~/.gitconfig
+cp -i .gitconfig $HOME/.gitconfig
 
 echo -e "\033[34mCopying .zsh-aliases to ~/.zsh-aliases\033[0m"
-cp -i .zsh-aliases ~/.zsh-aliases
+cp -i .zsh-aliases $HOME/.zsh-aliases
+cp -i tmux.conf $HOME/.tmux.conf
 
 if grep -q "zsh-aliases" "${HOME}/.zshrc"; then
   echo -e "\033[32m~/.zshrc contains .zsh-alises so I'm not adding it\033[0m"
 else
   echo -e "\033[31mAdding .zsh-aliases to ~/.zshrc\033[0m"
-  echo "source ~/.zsh-aliases" >> ~/.zshrc
+  echo "source ~/.zsh-aliases" >> $HOME/.zshrc
 fi
