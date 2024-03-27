@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd "$(dirname "$0")"
 # vim-plug
 # --------------------------------------------------
 echo -e "\033[34mChecking if vim-plug exists...\033[0m"
