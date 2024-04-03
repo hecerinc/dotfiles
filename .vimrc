@@ -272,14 +272,15 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <S-A-h> :nohl<CR>
 
 
-" ---------------------------------------------------------------------------------------------------- 
+" ----------------------------------------------------------------------------------------------------
 " COC.nvim
-" ---------------------------------------------------------------------------------------------------- 
+" ----------------------------------------------------------------------------------------------------
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition) zzzv
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <Leader><CR> :%s/^$\n//g<CR>
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -325,6 +326,7 @@ au BufRead,BufNewFile,BufWinEnter C:/dev/mcux/* setlocal ts=2 sw=2 et
 
 " 2. UIF analysis (4 spaces)
 au BufRead,BufNewFile,BufWinEnter C:/dev/uifanalysis/* setlocal ts=4 sw=4 et
+au BufRead,BufNewFile,BufWinEnter C:/dev/dbt-llm/* setlocal ts=4 sw=4 et
 
 " Command to change to the project
 command! Waas cd C:/dev/mcux/apps/web
