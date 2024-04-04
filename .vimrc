@@ -191,6 +191,7 @@ nmap <Leader>gh :0Glog<CR>
 
 let g:prettier#autoformat=0
 autocmd BufWritePre *.js,*.jsx,*.json,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql PrettierAsync
+autocmd BufWritePre *.py Format
 au BufRead,BufNewFile *.g4 set filetype=antlr4
 
 let g:tagbar_ctags_bin = 'C:/dev/utils/ctags/ctags.exe'
@@ -285,7 +286,9 @@ nmap <silent> <Leader><CR> :%s/^$\n//g<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=0 Format :call CocAction('format')
+" Add `:OR` command for organize imports of the current buffer
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 " Press ;f to Rg the word under cursor
