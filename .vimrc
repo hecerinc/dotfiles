@@ -285,6 +285,7 @@ nmap <silent> <Leader><CR> :%s/^$\n//g<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+command! -nargs=0 Format :call CocActionAsync('format')
 
 
 " Press ;f to Rg the word under cursor
