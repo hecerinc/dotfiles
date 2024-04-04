@@ -1,21 +1,28 @@
+[user]
+	name = Hector Rincon
+	email = hecerinc@hotmail.com
 [core]
 	preloadindex = true
 	fscache = true
 	autocrlf = input
+	longpaths = true
+	ignorecase = false
 [status]
 	submoduleSummary = false
 [alias]
 	co = checkout
-[user]
-	name = Hector Rincon
-	email = hecerinc@hotmail.com
+	sl = stash list --pretty=format:\"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(green)(%cr) %C(bold blue)<%an>%C(reset)\"
 [push]
 	default = upstream
 [gc]
 	auto = 256
 [rebase]
 	backend = apply
+; [blame]
+; 	ignoreRevsFile = .git-blame-ignore-revs
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
+[diff]
+	wsErrorHighlight = all
