@@ -138,8 +138,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
-	Plug 'tpope/vim-unimpaired'
 	Plug 'pangloss/vim-javascript'
+	Plug 'tpope/vim-unimpaired'
 	" Plug 'dense-analysis/ale'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'vimwiki/vimwiki'
@@ -152,10 +152,14 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'gabrielelana/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+	Plug 'wellle/context.vim'
+	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	" Plug 'nvim-treesitter/nvim-treesitter-context'
 
 	" Syntax highlighting
 	Plug 'pprovost/vim-ps1'
 	Plug 'jparise/vim-graphql'
+	Plug 'prisma/vim-prisma'
 
 	" Colorschemes
 	Plug 'srcery-colors/srcery-vim'
@@ -188,6 +192,9 @@ vmap <C-/> :Commentary<CR>
 
 " ;gh for the git log of the current file
 nmap <Leader>gh :0Glog<CR>
+nmap <leader>gs :Git<CR>
+nmap ga :diffget //2<CR>
+nmap gl :diffget //3<CR>
 
 let g:prettier#autoformat=0
 autocmd BufWritePre *.js,*.jsx,*.json,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql PrettierAsync
@@ -290,6 +297,21 @@ command! -nargs=0 Format :call CocAction('format')
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+
+" ---------------------------------------------------------------------------------------------------- 
 
 " Press ;f to Rg the word under cursor
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
