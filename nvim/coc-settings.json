@@ -1,5 +1,12 @@
 {
 	"python.linting.ruffEnabled": true,
 	"pyright.organizeimports.provider": "ruff",
-	"python.formatting.provider": "ruff"
+	"python.formatting.provider": "ruff",
+	"languageserver": {
+		"csharp-ls": {
+			"command": "csharp-ls",
+			"filetypes": ["cs"],
+			"rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+		}
+	}
 }
