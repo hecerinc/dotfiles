@@ -2,6 +2,11 @@
 	"python.linting.ruffEnabled": true,
 	"pyright.organizeimports.provider": "ruff",
 	"python.formatting.provider": "ruff",
+	"snippets.ultisnips.pythonPrompt": false,
+	"snippets.extends": {
+		"typescriptreact": ["typescript", "javascript"],
+		"typescript": ["javascript"]
+	},
 	"languageserver": {
 		"csharp-ls": {
 			"command": "csharp-ls",
