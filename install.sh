@@ -22,6 +22,28 @@ else
   sudo apt install -y ripgrep
 fi
 
+# fd
+# --------------------------------------------------
+echo -e "\033[34mChecking if fd exists...\033[0m"
+if command -v fdfind &> /dev/null; then
+  echo -e "\033[32mYou already have fd, awesome!\033[0m"
+else
+  echo -e "\033[31mNope, installing fd (fdfind)\033[0m"
+  # Debian-based stuff
+  sudo apt install -y fdfind
+fi
+
+# fzf
+# --------------------------------------------------
+echo -e "\033[34mChecking if fzf exists...\033[0m"
+if command -v fzffind &> /dev/null; then
+  echo -e "\033[32mYou already have fzf, awesome!\033[0m"
+else
+  echo -e "\033[31mNope, installing fzf\033[0m"
+  # Debian-based stuff
+  sudo apt install -y fzf
+fi
+
 # ZSH
 # --------------------------------------------------
 echo -e "\033[34mChecking if zsh is installed\033[0m"
@@ -70,3 +92,6 @@ else
   echo -e "\033[31mAdding .zsh-aliases to ~/.zshrc\033[0m"
   echo "source ~/.zsh-aliases" >> $HOME/.zshrc
 fi
+
+# Only use pager when necessary
+echo "export PAGER='less -FX'" >> $HOME/.zshrc
