@@ -1,11 +1,11 @@
 #!/bin/bash
-
+set -exuo pipefail
 NVIM_DIR="$HOME/nvim"
 
 echo 'export $XDG_CONFIG_HOME=$HOME' >> ~/.zshrc
 echo 'export $XDG_CONFIG_HOME=$HOME' >> ~/.profile
 
-mkdir -i $NVIM_DIR
+mkdir -p $NVIM_DIR
 
 cp ./nvim/init.vim ./nvim/ginit.vim $NVIM_DIR
 
