@@ -129,7 +129,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
 	Plug 'leafgarland/typescript-vim'
-	Plug 'majutsushi/tagbar'
+	" Plug 'majutsushi/tagbar'
+	Plug 'liuchengxu/vista.vim'
 	Plug 'mattn/emmet-vim', { 'commit': 'd698f1658770ca5fa58c87e80421c8d65bbe9065' }
 	Plug 'maxmellon/vim-jsx-pretty'
 	Plug 'michaeljsmith/vim-indent-object'
@@ -160,6 +161,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'pprovost/vim-ps1'
 	Plug 'jparise/vim-graphql'
 	Plug 'prisma/vim-prisma'
+	Plug 'carlsmedstad/vim-bicep'
 
 	" Colorschemes
 	Plug 'srcery-colors/srcery-vim'
@@ -198,6 +200,7 @@ nmap gl :diffget //3<CR>
 
 let g:prettier#autoformat=0
 autocmd BufWritePre *.js,*.jsx,*.json,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql PrettierAsync
+autocmd BufWritePost *.cs call FormatCsharp()
 autocmd BufWritePre *.py Format
 au BufRead,BufNewFile *.g4 set filetype=antlr4
 
@@ -232,6 +235,9 @@ nnoremap <Leader>s :s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 
 " Paste without removing the clipboard value
 xnoremap <Leader>d "_dP
+
+" When joining lines, do so without spaces
+nnoremap J gJ
 
 " When in Windows terminal, it's very hard to <C-v> because it's paste, so add a command to do visual block
 command! Vb :execute "normal! \<C-v>"
@@ -289,6 +295,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <Leader><CR> :%s/^$\n//g<CR>
+nmap <silent> <Leader>w :%s/\v(\\r)?\\n/\r/g<CR>
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -312,7 +319,16 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 
 " ---------------------------------------------------------------------------------------------------- 
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 1
 
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 " Press ;f to Rg the word under cursor
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
 
@@ -371,6 +387,14 @@ function! CopyMatches(reg)
   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+
+function FormatCsharp() abort
+	let l:fpath = expand("%:p")
+	echom l:fpath
+	let l:out = system('dotnet csharpier ' . l:fpath)
+	echom l:out
+	:checktime
+endfunction
 
 " For tmux bug in syntax coloring
 if exists('+termguicolors')

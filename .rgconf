@@ -1,4 +1,5 @@
 --smart-case
+--path-separator=/
 
 # Ignore pacakage-lock
 --glob=!package-lock.json
