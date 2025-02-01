@@ -7,6 +7,8 @@ alias ls="ls -p --color=auto $*"
 alias fd="fdfind $*"
 
 
+export LESS=-RFM
+
 # Support ctrl sequences through SSH
 # -------------------------------------------
 bindkey -e
