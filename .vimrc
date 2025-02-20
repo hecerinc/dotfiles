@@ -89,6 +89,21 @@ nnoremap N Nzzzv
 nnoremap <S-K> k
 
 
+" -- COC configuration -------------------------------------
+
+
+" Set up extensions to be installed automatically when running COC
+let g:coc_global_extensions = [
+	\'coc-snippets',
+	\'coc-html',
+	\'coc-eslint',
+	\'coc-tsserver',
+	\'coc-pyright',
+	\'coc-phpls',
+	\'coc-json',
+	\'coc-css'
+	\]
+
 
 " -- Searching ---------------------------------------------
 set ignorecase
@@ -131,7 +146,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'leafgarland/typescript-vim'
 	" Plug 'majutsushi/tagbar'
 	Plug 'liuchengxu/vista.vim'
-	Plug 'mattn/emmet-vim', { 'commit': 'd698f1658770ca5fa58c87e80421c8d65bbe9065' }
+	Plug 'mattn/emmet-vim', { 'commit': 'd697f1658770ca5fa58c87e80421c8d65bbe9065' }
 	Plug 'maxmellon/vim-jsx-pretty'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'chrisbra/Colorizer'
@@ -153,7 +168,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'gabrielelana/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-	Plug 'wellle/context.vim'
+	" Plug 'wellle/context.vim'
 	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	" Plug 'nvim-treesitter/nvim-treesitter-context'
 
@@ -190,6 +205,7 @@ call plug#end()
 
 " toggle commenting of lines with Ctrl + /
 nmap <C-/> :Commentary<CR>
+map <Leader>/ :Commentary<CR>
 vmap <C-/> :Commentary<CR>
 
 " ;gh for the git log of the current file
