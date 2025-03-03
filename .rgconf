@@ -1,4 +1,5 @@
 --smart-case
+--hidden
 --path-separator=/
 
 # Ignore pacakage-lock
