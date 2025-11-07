@@ -1,0 +1,26 @@
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+on   = "!"
+run  = 'shell "bash.exe" --block'
+desc = "Open $SHELL here"
+
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Desktop"
+desc = "cd to ~/Desktop"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd C:/dev"
+desc = "cd to /dev"
+
+# [[mgr.prepend_keymap]]
+# on   = "!"
+# for  = "windows"
+# run  = 'shell "powershell.exe" --block'
+# desc = "Open PowerShell here"

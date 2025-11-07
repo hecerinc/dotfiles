@@ -1,0 +1,13 @@
+[opener]
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = 'vlc.exe %*', orphan = true, for = "windows" }
+]
+
+[mgr]
+sort_by = "mtime"
+sort_reverse = true
