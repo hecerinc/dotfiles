@@ -6,6 +6,7 @@
 --glob=!package-lock.json
 --glob=!node_modules/*
 --glob=!lib/*
+--glob=!.git
 
 # Ignore yarn.lock
 --glob=!yarn.lock
