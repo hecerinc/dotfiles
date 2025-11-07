@@ -2,6 +2,9 @@
 	"python.linting.ruffEnabled": true,
 	"pyright.organizeimports.provider": "ruff",
 	"python.formatting.provider": "ruff",
+	"pyright.inlayHints.functionReturnTypes": false,
+	"pyright.inlayHints.variableTypes": false,
+	"pyright.inlayHints.parameterTypes": false,
 	"snippets.ultisnips.pythonPrompt": false,
 	"snippets.extends": {
 		"typescriptreact": ["typescript", "javascript"],
