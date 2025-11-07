@@ -4,6 +4,8 @@
 
 # Ignore pacakage-lock
 --glob=!package-lock.json
+--glob=!node_modules/*
+--glob=!lib/*
 
 # Ignore yarn.lock
 --glob=!yarn.lock

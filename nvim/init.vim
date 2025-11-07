@@ -22,3 +22,9 @@ set tabstop=4
 
 set wop-=pum " Remove the popup GUI menu for wildoptions
 
+" Have to set this here as well because mswin is messing with it
+" Switch to next buffer with Ctrl+Tab
+noremap <C-Tab> :bn<cr>
+
+" Parcel chokes if this is not set
+set backupcopy=yes
