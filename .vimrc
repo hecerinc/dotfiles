@@ -104,6 +104,8 @@ let g:coc_global_extensions = [
 	\'coc-css'
 	\]
 
+" Rename symbol
+nmap <leader>cn <Plug>(coc-rename)
 
 " -- Searching ---------------------------------------------
 set ignorecase
@@ -117,6 +119,7 @@ filetype indent plugin on
 map <Leader>n :bn<cr>
 map <Leader>p :bp<cr>
 map <Leader>d :bp\|bd #<CR>
+map <Leader>D :bp\|bd! #<CR>
 
 " Go to next or previous error
 map <Leader>k <Plug>(coc-diagnostic-prev)
@@ -136,6 +139,7 @@ set statusline=
       \\ \ %{expand('%:~:.')!=#''?expand('%:~:.'):'[No\ Name]'}
 	  \%=%<\ %-10{''.(&fenc!=''?&fenc:&enc).''}
       \%=%<\ %-14(%l:%v%)\ %4(%p%%%)\ \
+	  \%=%<\ %{getcwd()}
 
 
 " -- Plugins ------------------------------------------------
@@ -148,6 +152,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'liuchengxu/vista.vim'
 	Plug 'mattn/emmet-vim', { 'commit': 'd697f1658770ca5fa58c87e80421c8d65bbe9065' }
 	Plug 'maxmellon/vim-jsx-pretty'
+	Plug 'EdenEast/nightfox.nvim'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'chrisbra/Colorizer'
 	Plug 'scrooloose/nerdtree'
@@ -253,13 +258,13 @@ nnoremap <Leader>s :s/\<<C-r><C-w>\>//gI<Left><Left><Left>
 xnoremap <Leader>d "_dP
 
 " When joining lines, do so without spaces
-nnoremap J gJ
+" nnoremap J gJ
 
 " When in Windows terminal, it's very hard to <C-v> because it's paste, so add a command to do visual block
 command! Vb :execute "normal! \<C-v>"
 
 " Command to clean a JSON file
-command! JSONPrettify %!python -m json.tool
+command! JSONPrettify :setf json | %!python -m json.tool
 command! ParseJSON %!jq ". | fromjson" " requires jq in PATH
 
 " Highlight trailing whitespace
@@ -347,6 +352,9 @@ let g:vista#renderer#icons = {
 \  }
 " Press ;f to Rg the word under cursor
 nmap <leader>f :Rg <c-r>=expand("<cword>")<cr><CR>
+
+" Press ;b to Git blame the file
+nmap <leader>b :Git blame<CR>
 
 " Press ;j to beautify a JS file
 " nmap <leader>j :call JsBeautify()<cr> " TODO: this is already used by
