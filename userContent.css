@@ -1,0 +1,67 @@
+/* Put this in $APPDATA/Mozilla/Firefox/<profile>/chrome */
+@-moz-document url-prefix(about:home), url-prefix(about:newtab) {
+	:root {
+		color-scheme: dark !important;
+		--newtab-background-color: #2b2a33 !important;
+		--newtab-background-color-secondary: #42414d !important;
+		--newtab-text-primary-color: var(--text-color) !important;
+		--newtab-background-card: rgba(66, 65, 77, 0.8) !important;
+		--newtab-text-topic-label-color: var(--color-violet-30) !important;
+		--newtab-text-secondary-text: #fbfbfeb0 !important;
+		--newtab-contextual-text-primary-color: light-dark(
+			var(--text-color),
+			var(--newtab-text-primary-color)
+		) !important;
+		--newtab-primary-action-background-pocket: var(
+			--color-accent-primary
+		) !important;
+		--newtab-primary-action-background-pocket-dimmed: color-mix(
+			in srgb,
+			var(--newtab-primary-action-background) 25%,
+			transparent
+		) !important;
+		--newtab-primary-element-hover-color: color-mix(
+			in srgb,
+			var(--newtab-primary-action-background) 55%,
+			var(--color-white)
+		) !important;
+		--newtab-primary-element-hover-pocket-color: color-mix(
+			in srgb,
+			var(--newtab-primary-action-background-pocket) 55%,
+			var(--color-white)
+		) !important;
+		--newtab-element-hover-color: color-mix(
+			in srgb,
+			var(--newtab-background-color) 80%,
+			var(--color-white)
+		) !important;
+		--newtab-element-active-color: color-mix(
+			in srgb,
+			var(--newtab-background-color) 60%,
+			var(--color-white)
+		) !important;
+		--newtab-section-card-box-shadow-color: rgba(0, 0, 0, 80%) !important;
+		--newtab-element-secondary-color: color-mix(
+			in srgb,
+			currentColor 10%,
+			transparent
+		) !important;
+		--newtab-element-secondary-hover-color: color-mix(
+			in srgb,
+			currentColor 17%,
+			transparent
+		) !important;
+		--newtab-element-secondary-active-color: color-mix(
+			in srgb,
+			currentColor 30%,
+			transparent
+		) !important;
+		--newtab-border-color: color-mix(
+			in srgb,
+			var(--newtab-background-color) 75%,
+			var(--color-white)
+		) !important;
+		--newtab-primary-element-text-color: #2b2a33 !important;
+		--newtab-status-success: var(--color-green-30) !important;
+	}
+}
