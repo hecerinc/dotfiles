@@ -12,7 +12,9 @@ inoremap <C-BS> <C-W>
 
 " Important to enable the Windows clipboard in neovim
 set clipboard+=unnamedplus
-source $VIMRUNTIME/mswin.vim
+if has('win32')
+	source $VIMRUNTIME/mswin.vim
+endif
 
 " File format things
 set noet " Don't expand tabs to spaces
