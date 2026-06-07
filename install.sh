@@ -95,3 +95,9 @@ fi
 
 # Only use pager when necessary
 echo "export PAGER='less -FX'" >> $HOME/.zshrc
+
+
+# zoxide
+# --------------------------------------------------
+echo -e "\033[34mInstalling zoxide\033[0m"
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
