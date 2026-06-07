@@ -101,3 +101,4 @@ echo "export PAGER='less -FX'" >> $HOME/.zshrc
 # --------------------------------------------------
 echo -e "\033[34mInstalling zoxide\033[0m"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+echo 'eval "$(zoxide init zsh)"' >> $HOME/.zshrc
